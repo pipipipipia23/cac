@@ -1,0 +1,109 @@
+function createche()
+    local ScreenGui = Instance.new("ScreenGui")
+    local Frame = Instance.new("Frame")
+    local TextLabel = Instance.new("TextLabel")
+    local TextLabel_2 = Instance.new("TextLabel")
+    local TextLabel_3 = Instance.new("TextLabel")
+    
+    getgenv().nameche = 'nhin nhin cai dit me may'
+    
+    ScreenGui.Parent = game.CoreGui
+    ScreenGui.Name = getgenv().nameche
+    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    
+    Frame.Parent = ScreenGui
+    Frame.BackgroundColor3 = Color3.fromRGB(41, 138, 191)
+    Frame.BorderSizePixel = 10
+    Frame.ZIndex = 100
+    Frame.Position = UDim2.new(0.0730253309, 0, 0.0599755198, 0)
+    Frame.Size = UDim2.new(1e+10, 100000, 10000000, 1000817)
+    
+    TextLabel.Parent = Frame
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.BackgroundTransparency = 1.000
+    TextLabel.Position = UDim2.new(4.50819694e-11, 0, 4.41806343e-08, 0)
+    TextLabel.Size = UDim2.new(0, 200, 0, 50)
+    TextLabel.Font = Enum.Font.SourceSansSemibold
+    TextLabel.Text = "QUANH DEP TRAI"
+    TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.TextSize = 70.000
+    TextLabel.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+    
+    TextLabel_2.Parent = Frame
+    TextLabel_2.Name = "Status"
+    TextLabel_2.BackgroundColor3 = Color3.fromRGB(41, 138, 191)
+    TextLabel_2.BackgroundTransparency = 1.000
+    TextLabel_2.Position = UDim2.new(4.50464388e-11, 0, 5.25027488e-08, 0)
+    TextLabel_2.Size = UDim2.new(0, 200, 0, 50)
+    TextLabel_2.Font = Enum.Font.SourceSansSemibold
+    TextLabel_2.Text = "QUANH 20CM"
+    TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel_2.TextSize = 46.000
+    
+    TextLabel_3.Parent = Frame
+    TextLabel_3.Name = "Time"
+    TextLabel_3.BackgroundColor3 = Color3.fromRGB(41, 138, 191)
+    TextLabel_3.BackgroundTransparency = 1.000
+    TextLabel_3.Position = UDim2.new(4.50464388e-11, 0, 6.25027488e-08, 0)
+    TextLabel_3.Size = UDim2.new(0, 200, 0, 50)
+    TextLabel_3.Font = Enum.Font.SourceSansSemibold
+    TextLabel_3.Text = "30P"
+    TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel_3.TextSize = 46.000
+    game:GetService("CoreGui")[getgenv().nameche].Frame.Visible = true
+end
+
+createche()
+
+function checkingstatus(Text,Time)
+    game:GetService("CoreGui")[getgenv().nameche].Frame.Visible = true
+    game:GetService("CoreGui")[getgenv().nameche].Frame.Status.Text = Text
+    game:GetService("CoreGui")[getgenv().nameche].Frame.Time.Text = Time
+end
+
+
+function gettime()
+    local GameTime = math.floor(workspace.DistributedGameTime + 0.5)
+    local Hour = math.floor(GameTime/(60^2))%24
+    local Minute = math.floor(GameTime/(60^1))%60
+    local Second = math.floor(GameTime/(60^0))%60
+    return "Time : "..Hour .." Hour "..Minute.." Minute "..Second .." Second"
+end
+
+spawn(function()
+    while true do wait()
+        pcall(function()
+            if game:GetService("CoreGui"):FindFirstChild(getgenv().nameche) then
+                checkingstatus('dit me may nhin cai lon y ma nhin', gettime())
+            elseif not game:GetService("CoreGui"):FindFirstChild(getgenv().nameche) or game:GetService("CoreGui"):FindFirstChild(getgenv().nameche).Frame.Visible == false then
+                game.Players.LocalPlayer:Kick('Error')
+            end
+        end)
+    end
+end)
+
+function checkingstatus(Text,Time)
+    game:GetService("CoreGui")[getgenv().nameche].Frame.Visible = true
+    game:GetService("CoreGui")[getgenv().nameche].Frame.Status.Text = Text
+    game:GetService("CoreGui")[getgenv().nameche].Frame.Time.Text = Time
+end
+
+function gettime()
+    local GameTime = math.floor(workspace.DistributedGameTime + 0.5)
+    local Hour = math.floor(GameTime/(60^2))%24
+    local Minute = math.floor(GameTime/(60^1))%60
+    local Second = math.floor(GameTime/(60^0))%60
+    return "Time : "..Hour .." Hour "..Minute.." Minute "..Second .." Second"
+end
+
+spawn(function()
+    while true do wait()
+        pcall(function()
+            if game:GetService("CoreGui"):FindFirstChild(getgenv().nameche) then
+                checkingstatus('dit me may nhin cai lon y ma nhin', gettime())
+            elseif not game:GetService("CoreGui"):FindFirstChild(getgenv().nameche) or game:GetService("CoreGui"):FindFirstChild(getgenv().nameche).Frame.Visible == false then
+                game.Players.LocalPlayer:Kick('Error')
+            end
+        end)
+    end
+end)
